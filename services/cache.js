@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
+const keys = require('../config/keys')
 
 const redis = require('redis')
-const redisUrl = 'redis://127.0.0.1:6379';
-const client = redis.createClient(redisUrl);
+
+const client = redis.createClient(keys.redisUrl);
 const {promisify} = require('util')
 client.hget = promisify(client.hget);
 
